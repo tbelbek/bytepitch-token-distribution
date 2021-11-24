@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace TokenDistribution
+﻿namespace TokenDistribution
 {
     public class Program
     {

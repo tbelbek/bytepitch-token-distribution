@@ -28,7 +28,7 @@ namespace TokenDistribution
                 {
                     return Convert.ToInt32(t);
                 }
-                catch (FormatException e)
+                catch (FormatException)
                 {
                     Console.WriteLine($"Error parsing value {t}");
                     return -1;
