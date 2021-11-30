@@ -9,17 +9,19 @@ namespace TokenDistribution
         public void CalculateTokenReceivers(IEnumerable<int> weightList, int tokenAmount)
         {
             //Creates token receivers
-            var tokenReceivers = weightList.Select(t => new TokenReceiver() { Weight = t, TotalWeight = weightList.Sum() });
-            foreach (var tokenReceiver in tokenReceivers)
+            var tokenReceivers = weightList.Select(t => new TokenReceiver()
+            { Weight = t, TotalWeight = weightList.Sum() });
+
+            for (int i = 0; i < tokenReceivers.ToList().Count(); i++)
             {
                 Console.WriteLine(
-                    $"Weight with {tokenReceiver.Weight} receives {tokenReceiver.TokenShare(tokenAmount)} of the {tokenAmount} tokens");
+                    $"Weight with {tokenReceivers.ToList()[i].Weight} receives {tokenReceivers.ToList()[i].TokenAllShared(tokenReceivers.Select(t => t.CalculatePercent).ToList(), tokenAmount, i)} of the {tokenAmount} tokens");
             }
+
         }
 
         public virtual bool GetWeightList(out IEnumerable<int> weightList)
         {
-
             //Get weights
             Console.WriteLine("Enter weight with comma separated each:");
             weightList = Console.ReadLine()?.Split(',').Select(t =>
